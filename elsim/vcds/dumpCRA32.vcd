@@ -1,0 +1,54 @@
+$date
+Tue Jan 21 16:44:30 2020
+$end
+$version
+Digital Simulator by Marco Vitanza
+$end
+$comment
+$end
+$timescale 1ps $end
+$scope module logic $end
+$var wire 32 ! RippleAdder<32,FullAdder>.S $end
+$var wire 1 " RippleAdder<32,FullAdder>.Co $end
+$upscope $end
+$enddefinitions $end
+$dumpvars
+bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx !
+x"
+$end
+#112
+0"
+#133
+bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx0 !
+#183
+b000000000000000xxxxxxxxxxxxxxx00 !
+#233
+b000000000000000xxxxxxxxxxxxxx000 !
+#283
+b000000000000000xxxxxxxxxxxxx0000 !
+#333
+b000000000000000xxxxxxxxxxxx00000 !
+#383
+b000000000000000xxxxxxxxxxx000000 !
+#433
+b000000000000000xxxxxxxxxx0000000 !
+#483
+b000000000000000xxxxxxxxx00000000 !
+#533
+b000000000000000xxxxxxxx000000000 !
+#583
+b000000000000000xxxxxxx0000000000 !
+#633
+b000000000000000xxxxxx00000000000 !
+#683
+b000000000000000xxxxx000000000000 !
+#733
+b000000000000000xxxx0000000000000 !
+#783
+b000000000000000xxx00000000000000 !
+#833
+b000000000000000xx000000000000000 !
+#883
+b000000000000000x0000000000000000 !
+#933
+b00000000000000010000000000000000 !

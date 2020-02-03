@@ -1,0 +1,1 @@
+g++ -Isrc -Itest -Wall -gstabs -o elsim -DMOD_EXTRA src/Bit.cpp src/BitVector.cpp src/Module.cpp src/SystemModule.cpp test/DE2-mul.cpp
