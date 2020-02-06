@@ -1,6 +1,6 @@
-#ifdef DEBUG
+//#ifdef DEBUG
 #include <iostream>
-#endif
+//#endif
 #include <cstdarg>
 #include "Module.h"
 #include "Wire.h"
@@ -992,7 +992,10 @@ void operator<=(const Port& p, value_t val)
 		if (p.isOutput)
 		{
 			delay_t dT = p.module->delayToOutput(i);
-			if (dT <= 0) continue;
+			if (dT <= 0) 
+			{
+				continue;
+			}
 			p.module->setOutput(i, Bit(val & 1), Module::simtime+dT);
 		}
 		else p.module->setInput(i, Bit(val & 1), Module::simtime);

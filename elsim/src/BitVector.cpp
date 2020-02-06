@@ -1,5 +1,7 @@
 #include "BitVector.h"
 #include "Module.h"
+#include<iostream>
+#include <math.h>
 
 BitVector::BitVector(int width)
 {
@@ -14,11 +16,27 @@ BitVector::BitVector(Bit b)
 
 BitVector::BitVector(int width, value_t val)
 {
+
 	assert(width > 0 && width <= VALUE_T_BITS);
 	bits_.reserve(width);
 
 	for (int i = 0; i < width; i++, val >>= 1)
 		bits_.push_back(Bit(val & 1));
+}
+
+BitVector::BitVector(int width, BitVector bv)
+{
+	assert(width > 0); //&& width <= VALUE_T_BITS);
+	bits_.reserve(width);
+	int CopyVector_Width = bv.width();
+
+	for (int i = 0; i < width; i++)
+		{
+			if(i >= CopyVector_Width)
+				bits_.push_back(Bit(0));
+			else
+				bits_.push_back(bv.get(i));
+		}
 }
 
 BitVector::BitVector(const std::string& s)
@@ -141,6 +159,40 @@ BitVector BitVector::operator~() const
 	for (int i = 0; i < N; i++)
 		vec.set(i, ~bits_[i]);
 	return vec;
+}
+
+BitVector BitVector::LSHIFT(const BitVector& other)
+{
+	int N = other.width();
+	BitVector vec(width());
+
+	for (int i = 0; i < width(); i++)
+		{
+			if(i==0)
+				vec.set(0,0);
+			else if(i < N)
+				vec.set(i, other.get(i-1));
+			else
+				vec.set(i,0);
+		}
+	return vec;
+	
+}
+
+int BitVector::getValue()
+{
+	int N = width();
+	int val = 0;
+	for (int i = 0; i < N; i++)
+		{
+			if(get(i)==Bit(1))
+				val = val + pow(2,i);
+		}
+
+	if(get(N-1) == Bit(1))
+		return val-pow(2,N);
+	else
+		return val;
 }
 
 BitVector& BitVector::AND(const BitVector& other)

@@ -20,6 +20,8 @@ public:
 	BitVector(Bit b);
 	// create vector with specified width from int value
 	BitVector(int width, value_t val);
+	// create vector with specified width from another vector
+	BitVector(int width, BitVector bv);
 	// create vector with string (allowed chars are '0','1','x')
 	BitVector(const std::string& s);
 	// read vector from Module input port
@@ -47,6 +49,11 @@ public:
 	BitVector operator|(const BitVector& other) const;
 	BitVector operator^(const BitVector& other) const;
 	BitVector operator~() const;
+	BitVector LSHIFT(const BitVector& other);
+	int getValue();
+	
+
+	//BitVector&  RSHIFT();
 
 	// bitwise methods that change current BitVector
 	BitVector&  AND(const BitVector& other);

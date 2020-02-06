@@ -31,3 +31,4 @@
 
 //multiplier modules
 #include "BENC.h"		// Booth-Encoder
+#include "PreCompute.h"		// Pre-compute multiplicand results 

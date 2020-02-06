@@ -49,57 +49,44 @@ int main(int argc, char** argv)
 	}
 
 	// read input values
-	Bit b2 = Bit(!!atoi(argv[1]));
-	Bit b1 = Bit(!!atoi(argv[2]));
-	Bit b0 = Bit(!!atoi(argv[3]));
+	//Bit b2 = Bit(!!atoi(argv[1]));
+	//Bit b1 = Bit(!!atoi(argv[2]));
+	//Bit b0 = Bit(!!atoi(argv[3]));
 
-	//MUX mux(1);
-	//
+	//BENC benc1(1);
+
 	//// set inputs and simulate
-	//mux("A") <= b0;
-	//mux("B") <= b1;
-	//mux("SEL") <= b2;
-	//mux.simulate();
+	//benc1("B0") <= b0;
+	//benc1("B1") <= b1;
+	//benc1("B2") <= b2;
+	//benc1.simulate();
 
-	//// print the mux name
-	//cout << mux << endl;;
+	//// print the benc1 name
+	//cout << benc1 << endl;;
 
 	//// print the results and the times
-	//cout << b2 << b1 << b0 << " = " << "(" << mux("Z") << ")" << endl;
-	////cout << "Sum   at T = " << mux.lastTime("S")  << endl;
+	//cout << b2 << b1 << b0 << " = " << "(" << benc1("Y2") << benc1("Y1") << benc1("Y0") << ")" << endl;
+	////cout << "Sum   at T = " << benc1.lastTime("S")  << endl;
 	////cout << "Carry at T = " << benc1.lastTime("Co") << endl;
 
-	//HA ha();
-	//
-	//// set inputs and simulate
-	//ha("X") <= b0;
-	//ha("Y") <= b1;
-	//ha.simulate();
+	value_t A = atoi(argv[1]);
 
-	//// print the ha name
-	//cout << ha << endl;;
 
-	//// print the results and the times
-	//cout << b0 << b1 << " = " << "(" << ha("C") << ")" << ha("S") << endl;
-	////cout << "Sum   at T = " << mux.lastTime("S")  << endl;
-	////cout << "Carry at T = " << benc1.lastTime("Co") << endl;
-
-	
-
-	BENC benc1(1);
+	PreCompute pre(2);
 
 	// set inputs and simulate
-	benc1("B0") <= b0;
-	benc1("B1") <= b1;
-	benc1("B2") <= b2;
-	benc1.simulate();
+	pre("A") <= A;
+	pre.simulate();
 
-	// print the benc1 name
-	cout << benc1 << endl;;
+	// print the pre name
+	cout << pre << endl;;
 
 	// print the results and the times
-	cout << b2 << b1 << b0 << " = " << "(" << benc1("Y2") << benc1("Y1") << benc1("Y0") << ")" << endl;
-	//cout << "Sum   at T = " << benc1.lastTime("S")  << endl;
+	cout << A << " = " << "(" << pre("A0") << " " << pre("A1") << " "  << pre("A2") << " "  << pre("ABar") << " "  << pre("A2Bar") << " "  << ")" << endl;
+//	cout << A << " = " << "(" << pre("A0") << ")" << endl;
+//	BitVector C(3, 0);
+//	cout << C << endl;
+	//cout << "Sum   at T = " << pre.lastTime("S")  << endl;
 	//cout << "Carry at T = " << benc1.lastTime("Co") << endl;
 
 
