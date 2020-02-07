@@ -49,23 +49,23 @@ int main(int argc, char** argv)
 	}
 
 	// read input values
-	//Bit b2 = Bit(!!atoi(argv[1]));
-	//Bit b1 = Bit(!!atoi(argv[2]));
-	//Bit b0 = Bit(!!atoi(argv[3]));
+	Bit b2 = Bit(!!atoi(argv[1]));
+	Bit b1 = Bit(!!atoi(argv[2]));
+	Bit b0 = Bit(!!atoi(argv[3]));
 
-	//BENC benc1(1);
+	BENC benc1(1);
 
-	//// set inputs and simulate
-	//benc1("B0") <= b0;
-	//benc1("B1") <= b1;
-	//benc1("B2") <= b2;
-	//benc1.simulate();
+	// set inputs and simulate
+	benc1("B0") <= b0;
+	benc1("B1") <= b1;
+	benc1("B2") <= b2;
+	benc1.simulate();
 
-	//// print the benc1 name
-	//cout << benc1 << endl;;
+	// print the benc1 name
+	cout << benc1 << endl;;
 
-	//// print the results and the times
-	//cout << b2 << b1 << b0 << " = " << "(" << benc1("Y2") << benc1("Y1") << benc1("Y0") << ")" << endl;
+	// print the results and the times
+	cout << b2 << b1 << b0 << " = " << "(" << benc1("Y2") << benc1("Y1") << benc1("Y0") << ")" << endl;
 	////cout << "Sum   at T = " << benc1.lastTime("S")  << endl;
 	////cout << "Carry at T = " << benc1.lastTime("Co") << endl;
 
@@ -88,6 +88,33 @@ int main(int argc, char** argv)
 //	cout << C << endl;
 	//cout << "Sum   at T = " << pre.lastTime("S")  << endl;
 	//cout << "Carry at T = " << benc1.lastTime("Co") << endl;
+
+
+	MUX5to1 mux1(4);
+
+	BitVector A0(4,0);
+	BitVector A1(4,A);
+	BitVector A2(4,2*A);
+	BitVector ABar(4,-1*A);
+	BitVector A2Bar(4,-2*A);
+	BitVector Sel(4,4);
+
+	mux1("A0") <= A0;
+	value_t sel = 5;
+	mux1("A1") <= A1;
+	mux1("A2") <= A2;
+	mux1("ABar") <= ABar;
+	mux1("A2Bar") <= A2Bar;
+	mux1("SEL") <= sel; 
+
+	mux1.simulate();
+
+	cout << mux1 << endl;;
+
+	// print the results and the times
+	cout << mux1("Z") << endl;
+//	cout << A << " = " << "(" << pre("A0") << ")" << endl;
+
 
 
 

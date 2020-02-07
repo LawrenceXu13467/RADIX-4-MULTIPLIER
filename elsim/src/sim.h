@@ -32,3 +32,4 @@
 //multiplier modules
 #include "BENC.h"		// Booth-Encoder
 #include "PreCompute.h"		// Pre-compute multiplicand results 
+#include "MUX5to1.h"		// 5 to 1 Mux to choose among 0,A,2A,-A,-2A based on BENC o/p

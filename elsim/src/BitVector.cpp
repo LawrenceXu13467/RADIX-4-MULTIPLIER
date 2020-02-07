@@ -20,6 +20,10 @@ BitVector::BitVector(int width, value_t val)
 	assert(width > 0 && width <= VALUE_T_BITS);
 	bits_.reserve(width);
 
+	//if(val<0)
+	//	val = pow(2,width) - val;
+
+
 	for (int i = 0; i < width; i++, val >>= 1)
 		bits_.push_back(Bit(val & 1));
 }
