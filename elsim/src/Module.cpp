@@ -826,8 +826,9 @@ void Module::simStart(const MSET_T& roots, delay_t steps)
 	simqueue = new SimQueue();
 
 	// propagate from root modules
-	for (MITER_T iter = roots.begin(); iter != roots.end(); iter++)
-		(*iter)->propagate();
+	for (MITER_T iter = roots.begin(); iter != roots.end(); iter++) {
+        (*iter)->propagate();
+    }
 
 	// simulate for requested number of time steps
 	simStep(steps);

@@ -1,0 +1,66 @@
+#! /usr/local/bin/vvp
+:ivl_version "10.3 (stable)" "(v10_3-20-g2c0995ca)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "vhdl_sys";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x5595547b3e20 .scope module, "test" "test" 2 15;
+ .timescale 0 0;
+L_0x7f4dca793018 .functor BUFT 1, C4<00000000000000>, C4<0>, C4<0>, C4<0>;
+v0x5595547c6cc0_0 .net "A0", 13 0, L_0x7f4dca793018;  1 drivers
+L_0x7f4dca793180 .functor BUFT 1, C4<00000000000111>, C4<0>, C4<0>, C4<0>;
+v0x5595547c6da0_0 .net "A1", 13 0, L_0x7f4dca793180;  1 drivers
+v0x5595547c6e40_0 .net "A2", 13 0, L_0x5595547d7080;  1 drivers
+v0x5595547c6ee0_0 .net "A2Bar", 13 0, L_0x5595547d7330;  1 drivers
+v0x5595547c6f80_0 .net "ABar", 13 0, L_0x5595547d71f0;  1 drivers
+E_0x559554791190/0 .event edge, v0x5595547900c0_0, v0x55955478f970_0, v0x5595547c63d0_0, v0x5595547c65e0_0;
+E_0x559554791190/1 .event edge, v0x5595547c64b0_0;
+E_0x559554791190 .event/or E_0x559554791190/0, E_0x559554791190/1;
+S_0x55955478fab0 .scope module, "pre" "PreCompute" 2 18, 2 1 0, S_0x5595547b3e20;
+ .timescale 0 0;
+    .port_info 0 /INPUT 12 "A"
+    .port_info 1 /OUTPUT 14 "A0"
+    .port_info 2 /OUTPUT 14 "A1"
+    .port_info 3 /OUTPUT 14 "A2"
+    .port_info 4 /OUTPUT 14 "ABar"
+    .port_info 5 /OUTPUT 14 "A2Bar"
+L_0x7f4dca793138 .functor BUFT 1, C4<000000000111>, C4<0>, C4<0>, C4<0>;
+v0x559554790ef0_0 .net "A", 11 0, L_0x7f4dca793138;  1 drivers
+v0x5595547900c0_0 .net/s "A0", 13 0, L_0x7f4dca793018;  alias, 1 drivers
+v0x55955478f970_0 .net/s "A1", 13 0, L_0x7f4dca793180;  alias, 1 drivers
+v0x5595547c63d0_0 .net/s "A2", 13 0, L_0x5595547d7080;  alias, 1 drivers
+v0x5595547c64b0_0 .net/s "A2Bar", 13 0, L_0x5595547d7330;  alias, 1 drivers
+v0x5595547c65e0_0 .net/s "ABar", 13 0, L_0x5595547d71f0;  alias, 1 drivers
+L_0x7f4dca793060 .functor BUFT 1, C4<00000000000010>, C4<0>, C4<0>, C4<0>;
+v0x5595547c66c0_0 .net/2u *"_s10", 13 0, L_0x7f4dca793060;  1 drivers
+L_0x7f4dca793210 .functor BUFT 1, C4<00000000000111>, C4<0>, C4<0>, C4<0>;
+v0x5595547c67a0_0 .net *"_s14", 13 0, L_0x7f4dca793210;  1 drivers
+L_0x7f4dca7930a8 .functor BUFT 1, C4<00000000000000>, C4<0>, C4<0>, C4<0>;
+v0x5595547c6880_0 .net *"_s18", 13 0, L_0x7f4dca7930a8;  1 drivers
+L_0x7f4dca793258 .functor BUFT 1, C4<00000000000111>, C4<0>, C4<0>, C4<0>;
+v0x5595547c6960_0 .net *"_s22", 13 0, L_0x7f4dca793258;  1 drivers
+L_0x7f4dca7930f0 .functor BUFT 1, C4<11111111111110>, C4<0>, C4<0>, C4<0>;
+v0x5595547c6a40_0 .net/2u *"_s26", 13 0, L_0x7f4dca7930f0;  1 drivers
+L_0x7f4dca7931c8 .functor BUFT 1, C4<00000000000111>, C4<0>, C4<0>, C4<0>;
+v0x5595547c6b20_0 .net *"_s6", 13 0, L_0x7f4dca7931c8;  1 drivers
+L_0x5595547d7080 .arith/mult 14, L_0x7f4dca7931c8, L_0x7f4dca793060;
+L_0x5595547d71f0 .arith/sub 14, L_0x7f4dca7930a8, L_0x7f4dca793210;
+L_0x5595547d7330 .arith/mult 14, L_0x7f4dca793258, L_0x7f4dca7930f0;
+    .scope S_0x5595547b3e20;
+T_0 ;
+    %wait E_0x559554791190;
+    %vpi_call 2 22 "$display", v0x5595547c6cc0_0 {0 0 0};
+    %vpi_call 2 23 "$display", v0x5595547c6da0_0 {0 0 0};
+    %vpi_call 2 24 "$display", v0x5595547c6e40_0 {0 0 0};
+    %vpi_call 2 25 "$display", v0x5595547c6f80_0 {0 0 0};
+    %vpi_call 2 26 "$display", v0x5595547c6ee0_0 {0 0 0};
+    %vpi_call 2 27 "$finish" {0 0 0};
+    %jmp T_0;
+    .thread T_0, $push;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "PreCompute.v";

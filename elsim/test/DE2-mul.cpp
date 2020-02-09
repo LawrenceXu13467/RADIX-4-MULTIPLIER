@@ -53,67 +53,83 @@ int main(int argc, char** argv)
 	Bit b1 = Bit(!!atoi(argv[2]));
 	Bit b0 = Bit(!!atoi(argv[3]));
 
-	BENC benc1(1);
+	//BENC benc1(1);
 
-	// set inputs and simulate
-	benc1("B0") <= b0;
-	benc1("B1") <= b1;
-	benc1("B2") <= b2;
-	benc1.simulate();
+	//// set inputs and simulate
+	//benc1("B0") <= b0;
+	//benc1("B1") <= b1;
+	//benc1("B2") <= b2;
+	//benc1.simulate();
 
-	// print the benc1 name
-	cout << benc1 << endl;;
+	//// print the benc1 name
+	//cout << benc1 << endl;;
 
-	// print the results and the times
-	cout << b2 << b1 << b0 << " = " << "(" << benc1("Y2") << benc1("Y1") << benc1("Y0") << ")" << endl;
-	////cout << "Sum   at T = " << benc1.lastTime("S")  << endl;
+	//// print the results and the times
+	//cout << b2 << b1 << b0 << " = " << "(" << benc1("Y")  << ")" << endl;
+	//////cout << "Sum   at T = " << benc1.lastTime("S")  << endl;
+	//////cout << "Carry at T = " << benc1.lastTime("Co") << endl;
+
+	//value_t A = atoi(argv[1]);
+
+
+	//PreCompute pre(2);
+
+	//// set inputs and simulate
+	//pre("A") <= A;
+	//pre.simulate();
+
+	//// print the pre name
+	//cout << pre << endl;;
+
+	//// print the results and the times
+	//cout << A << " = " << "(" << pre("A0") << " " << pre("A1") << " "  << pre("A2") << " "  << pre("ABar") << " "  << pre("A2Bar") << " "  << ")" << endl;
+//	//cout << A << " = " << "(" << pre("A0") << ")" << endl;
+//	//BitVector C(3, 0);
+//	//cout << C << endl;
+	////cout << "Sum   at T = " << pre.lastTime("S")  << endl;
 	////cout << "Carry at T = " << benc1.lastTime("Co") << endl;
 
-	value_t A = atoi(argv[1]);
+
+	//MUX5to1 mux1(4);
+
+	//BitVector A0(4,0);
+	//BitVector A1(4,A);
+	//BitVector A2(4,2*A);
+	//BitVector ABar(4,-1*A);
+	//BitVector A2Bar(4,-2*A);
+	//BitVector Sel(4,4);
+
+	//mux1("A0") <= A0;
+	//value_t sel = 5;
+	//mux1("A1") <= A1;
+	//mux1("A2") <= A2;
+	//mux1("ABar") <= ABar;
+	//mux1("A2Bar") <= A2Bar;
+	//mux1("SEL") <= sel; 
+
+	//mux1.simulate();
+
+	//cout << mux1 << endl;;
+
+	//// print the results and the times
+	//cout << mux1("Z") << endl;
+//	cout << A << " = " << "(" << pre("A0") << ")" << endl;
 
 
-	PreCompute pre(2);
+//Mutiplier 
+	BitVector M1(12,1);
+	BitVector M0(1,0);
+	MULRadix4Booth mul(12);
+	mul("X") <= M1;
+	mul("Y") <= M1;
+	mul("Zero") <= M0;
 
-	// set inputs and simulate
-	pre("A") <= A;
-	pre.simulate();
+	mul.simulate();
 
-	// print the pre name
-	cout << pre << endl;;
+	cout << mul << endl;;
 
 	// print the results and the times
-	cout << A << " = " << "(" << pre("A0") << " " << pre("A1") << " "  << pre("A2") << " "  << pre("ABar") << " "  << pre("A2Bar") << " "  << ")" << endl;
-//	cout << A << " = " << "(" << pre("A0") << ")" << endl;
-//	BitVector C(3, 0);
-//	cout << C << endl;
-	//cout << "Sum   at T = " << pre.lastTime("S")  << endl;
-	//cout << "Carry at T = " << benc1.lastTime("Co") << endl;
-
-
-	MUX5to1 mux1(4);
-
-	BitVector A0(4,0);
-	BitVector A1(4,A);
-	BitVector A2(4,2*A);
-	BitVector ABar(4,-1*A);
-	BitVector A2Bar(4,-2*A);
-	BitVector Sel(4,4);
-
-	mux1("A0") <= A0;
-	value_t sel = 5;
-	mux1("A1") <= A1;
-	mux1("A2") <= A2;
-	mux1("ABar") <= ABar;
-	mux1("A2Bar") <= A2Bar;
-	mux1("SEL") <= sel; 
-
-	mux1.simulate();
-
-	cout << mux1 << endl;;
-
-	// print the results and the times
-	cout << mux1("Z") << endl;
-//	cout << A << " = " << "(" << pre("A0") << ")" << endl;
+	cout << mul("P") << endl;
 
 
 

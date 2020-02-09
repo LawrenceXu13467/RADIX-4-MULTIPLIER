@@ -1,6 +1,6 @@
-#ifdef DEBUG
+//#ifdef DEBUG
 #include <iostream>
-#endif
+//#endif
 #include <cstdarg>
 #include <queue>
 #include "SystemModule.h"
@@ -32,11 +32,17 @@ std::cout << "system propagate " << *this << " T=" << simtime << std::endl;
 	for (int i = 0; i < numInputs(); i++)
 		if (Wire* w = inWires_[i])
 			for (PORTITER_T iter = w->beginReaders(); iter != w->endReaders(); iter++)
+			{
 				modules.insert((*iter).first);
+				//Module* m = (*iter).first;
+				//std::cout << "Came here 0 " << ((*iter).first)->classname() << std::endl;
+			}
 
 	// propagate all submodules
 	for (MITER_T iter = modules.begin(); iter != modules.end(); iter++)
+	{
 		(*iter)->propagate();
+	}
 }
 
 ////////////////////////////////////////////////////////////

@@ -75,12 +75,13 @@ int main(int argc, char** argv)
 	//RippleAdder ripadder16(16);
 	//RippleAdder ripadder32(32);
 	//SkipAdder   skpadder16(16, 2);
-	SelectAdder seladder16(16, RippleAdder(4));
-	SelectAdder selclaadder16(16, LookaheadAdder(4));
-	SelectAdder seladder32(32, RippleAdder(4));
-	SelectAdder selclaadder32(32, LookaheadAdder(4));
+	//SelectAdder seladder16(16, RippleAdder(4));
+	//SelectAdder selclaadder16(16, LookaheadAdder(4));
+	//SelectAdder seladder32(32, RippleAdder(4));
+	//SelectAdder selclaadder32(32, LookaheadAdder(4));
 	//LookaheadAdder claseladder16(16,seladder4);
-	//RippleAdder ripadder1(1);
+	RippleAdder ripadder1(4);
+	SaveAdder saveadder1(4);
 	//RippleAdder ripadder2(2);
 	//LookaheadAdder claadder16(16);
 	//LookaheadAdder hc2ladder16(16,LookaheadAdder(2));
@@ -108,11 +109,25 @@ int main(int argc, char** argv)
 	//testAdder(hc4ladder16, x, y, c);
 	//testAdder(hc4ladder32, x, y, c);
 	//testAdder(hc8ladder16, x, y, c);
-	testAdder(seladder16, x, y, c);
-	testAdder(selclaadder16, x, y, c);
-	testAdder(seladder32, x, y, c);
-	testAdder(selclaadder32, x, y, c);
-	//testAdder(claseladder16, x, y, c);
+	//testAdder(seladder16, x, y, c);
+	//testAdder(selclaadder16, x, y, c);
+	//testAdder(seladder32, x, y, c);
+	//testAdder(selclaadder32, x, y, c);
+	testAdder(ripadder1, x, y, c);
+	saveadder1("X") <= x;
+	saveadder1("Y") <= y;
+	saveadder1("Ci") <= 1;
+	saveadder1.simulate();
+
+	// print the saveadder1 name
+	cout << saveadder1 << endl;;
+
+	// print the results and the times
+	cout << x << " + " << y << " + " << c << " = " << "(" << saveadder1("Co") << ")" << saveadder1("S") << endl;
+	cout << "Sum   at T = " << saveadder1.lastTime("S")  << endl;
+	cout << "Carry at T = " << saveadder1.lastTime("Co") << endl;
+
+
 	//testAdder(selclaadder16, x, y, c);
 	//testAdder(preadder16, x, y, c);
 

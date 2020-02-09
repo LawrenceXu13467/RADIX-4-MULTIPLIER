@@ -19,9 +19,7 @@ public:
 		addInput("B1",N);
 		addInput("B2",N);
 
-		addOutput("Y0",N);
-		addOutput("Y1",N);
-		addOutput("Y2",N);
+		addOutput("Y",3);
 
 		std::stringstream ss;
 		ss << "BENC<" << N << ">";
@@ -37,9 +35,13 @@ public:
 		Bit b1_xor_b0 = (b1 ^ b0);
 		Bit b2_xnor_b1 = ~(b2 ^ b1);
 
-		OUT("Y0") <= ~(b1_xor_b0 | b2_xnor_b1);
-		OUT("Y1") <= b1_xor_b0;
-		OUT("Y2") <= (b2);
+		BitVector out(3);
+		out.set(0,~(b1_xor_b0 | b2_xnor_b1));
+		out.set(1,b1_xor_b0);
+		out.set(2,b2);
+
+		OUT("Y") <= out;
+
 	}
 
 	delay_t delay(int inum, int onum)
