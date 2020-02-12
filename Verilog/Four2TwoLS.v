@@ -5,6 +5,6 @@ input a,b,c,d;
 output s,co,to;
 
 assign s = ((a^b)^c)^d;
-assign c0 = ((a^b)&d) | ((a^b)&c) | (c&d);
-assign t0 = (a&b)
+assign co = ((a^b)&d) | ((a^b)&c) | (c&d);
+assign to = (a&b)
 endmodule
