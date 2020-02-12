@@ -6,6 +6,6 @@ wire p_sel;
 
 assign p_sel = x^y;
 assign s = p_sel^ci;
-assign c0 = p_sel? x : ci;
+assign co = p_sel?ci:x;
 
 endmodule

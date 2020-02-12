@@ -9,16 +9,16 @@ assign Co = ((X & Y) | (X & Ci) | (Y & Ci))<<1;
 
 endmodule
 
-//module test;
-//
-//wire [23:0] S,Co;
-//CarrySaveAdder save(24'b011,24'b010,24'b0,S,Co);
-//
-//always@(*)
-//begin
-//	$display(S);
-//	$display(Co);
-//	$finish;
-//end
-//
-//endmodule
+// module test;
+
+// wire [23:0] S,Co;
+// CarrySaveAdder save(24'b011,24'b010,24'b0,S,Co);
+
+// always@(*)
+// begin
+// 	$display(S);
+// 	$display(Co);
+// 	$finish;
+// end
+
+// endmodule
