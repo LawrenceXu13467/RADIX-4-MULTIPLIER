@@ -6,5 +6,5 @@ output s,co,to;
 
 assign s = (a^b)^(c^d);
 assign co = ((a^b)&c) | ((a^b)&d) | (c&d);
-assign to = (a&b)
+assign to = (a&b);
 endmodule
