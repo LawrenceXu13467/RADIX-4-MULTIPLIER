@@ -33,16 +33,17 @@ endmodule
 
 module test;
 
-wire [23:0] P9,P10,P11,P12;
+wire [23:0] P9,P10,P11,P12, P13;
 Wallace_12x12 wp1(12'b111111111,12'b111111111,P9);
 Wallace_12x12 wp2(12'b1111111111,12'b1111111111,P10);
 Wallace_12x12 wp3(12'b11111111111,12'b11111111111,P11);
-Wallace_12x12 wp4(12'b111111111111,12'b111111111111,P12);
+//Wallace_12x12 wp4(12'b111111111111,12'b111111111111,P12);
+Wallace_12x12 wp5(12'b111111111111,12'b1,P13);
 //Wallace_12x12 wp(12'b11111111,12'b11111111,P);
 
 initial
 begin
-	$monitor("%d, %d, %d, %d",P9,P10,P11,P12);
+	$monitor("%d, %d, %d, %d",P9,P10,P11,P13);
 	$finish;
 end
 
